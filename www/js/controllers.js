@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
-.service('TodosService', function($q) {
+.service('MesasService', function($q) {
   return {
-    todos: [
+    mesas: [
       {
         id: '1',
         nMesa: 1,
@@ -18,13 +18,13 @@ angular.module('starter.controllers', [])
         nPax: 2
       }
     ],
-    getTodos: function() {
-      return this.todos
+    getMesas: function() {
+      return this.mesas
     },
-    getTodo: function(todoId) {
+    getMesa: function(mesaId) {
       var dfd = $q.defer()
-      this.todos.forEach(function(todo) {
-        if (todo.id === todoId) dfd.resolve(todo)
+      this.mesas.forEach(function(mesa) {
+        if (mesa.id === mesaId) dfd.resolve(mesa)
       })
 
       return dfd.promise
@@ -75,10 +75,10 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('MesasCtrl', function($scope, todos) {
-  $scope.mesas = todos;
+.controller('MesasCtrl', function($scope, mesas) {
+  $scope.mesas = mesas;
 })
 
-.controller('MesaCtrl', function($scope, todo) {
-  $scope.todo = todo;
+.controller('MesaCtrl', function($scope, mesa) {
+  $scope.mesas = mesas;
 });
