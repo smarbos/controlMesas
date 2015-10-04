@@ -1,6 +1,11 @@
-<ion-view view-title="Playlist">
+<ion-view view-title="Mesa">
   <ion-content>
-    <h1 ng-repeat="playlist in playlists">Playlist</h1>
-    {{playlist.numeroMesa}}
+    <ion-list>
+      <ion-item ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.id}}">
+        <h1>MESA {{mesa.nMesa}}</h1>
+        <h4>{{mesa.nPax}} PAX</h4>
+        <h4>ID: {{mesa.id}}</h4>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
