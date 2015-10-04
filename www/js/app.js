@@ -39,8 +39,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           templateUrl: 'templates/mesas.html',
           controller: 'MesasCtrl',
           resolve: {
-            todos: function(TodosService) {
-              return TodosService.getTodos()
+            mesas: function(MesasService) {
+              return MesasService.getMesas()
             }
           }
         }
@@ -48,14 +48,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
   .state('app.single', {
-    url: '/mesa/:mesaId',
+    url: '/mesas/:mesaId',
     views: {
       'menuContent': {
         templateUrl: 'templates/mesa.html',
         controller: 'MesaCtrl',
         resolve: {
-          todos: function(TodosService) {
-            return TodosService.getTodos()
+          mesas: function(MesasService) {
+            return MesasService.getMesa(mesaId)
           }
         }
       }
