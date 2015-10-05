@@ -52,12 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/mesa.html',
-        controller: 'MesaCtrl',
-        resolve: {
-          mesas: function(MesasService) {
-            return MesasService.getMesa(mesaId)
-          }
-        }
+        controller: 'MesaCtrl'
       }
     }
   });
