@@ -1,7 +1,8 @@
 <ion-view view-title="Mesas">
   <ion-content>
     <ion-list>
-      <div class="card" ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.id}}">
+      <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.id}}">
+      <div class="card">
         <div class="row">
           <div class="col col-25">
               <div class="col text-center">
@@ -29,6 +30,7 @@
           </div>
         </div>
       </div>
+    </a>
     </ion-list>
   </ion-content>
 </ion-view>
