@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
         if (mesa.id === mesaId) dfd.resolve(mesa)
       })
 
-      return dfd.promise
+      return this.mesas[mesaId]
     }
 
   }
@@ -44,6 +44,31 @@ angular.module('starter.controllers', [])
   // Form data for the login modal
   $scope.loginData = {};
 
+
+
+  var menu = [
+    {
+    'entradas': {
+      'id': 1,
+      'nombre': "Borek",
+      'precio': 67
+    }
+    },
+    {
+    'principales': {
+      'id': 1,
+      'nombre': "Pasha Borek",
+      'precio': 120
+    }
+  },{
+    'postres': {
+      'id': 1,
+      'nombre': "Baklava",
+      'precio': 98
+    }
+
+  }];
+  console.log(menu);
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
@@ -79,6 +104,8 @@ angular.module('starter.controllers', [])
   $scope.mesas = mesas;
 })
 
-.controller('MesaCtrl', function($scope, mesa) {
-  $scope.mesas = mesas;
+.controller('MesaCtrl', function($scope, MesasService, $location) {
+  var mesaId = $location.path().split("/")[3]||"Unknown";
+  $scope.mesa = MesasService.getMesa(mesaId-1)
+  console.log($scope.mesa);
 });
