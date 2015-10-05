@@ -21,6 +21,9 @@ angular.module('starter.controllers', [])
     getMesas: function() {
       return this.mesas
     },
+    addMesa: function(){
+        console.log("add mesa")
+    },
     getMesa: function(mesaId) {
       var dfd = $q.defer()
       this.mesas.forEach(function(mesa) {
@@ -41,9 +44,34 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
+
+  // ADD TABLE
+  $ionicModal.fromTemplateUrl('templates/addTable.html', {
+    scope: $scope
+}).then(function(addTableModal) {
+    $scope.addTableModal = addTableModal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeAddTable = function() {
+    $scope.addTableModal.hide();
+  };
+
+  // Open the login modal
+  $scope.addTable = function() {
+    $scope.addTableModal.show();
+  };
+
+  $scope.createTable = function(MesasService) {
+    //   console.log($scope.createTableData);
+    $scope.newMesa = MesasService.addMesa()
+    console.log($scope.newMesa);
+  }
+
+
   // Form data for the login modal
   $scope.loginData = {};
-
+  $scope.createTableData = {};
 
 
   var menu = [
