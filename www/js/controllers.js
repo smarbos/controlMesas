@@ -21,8 +21,15 @@ angular.module('starter.controllers', [])
     getMesas: function() {
       return this.mesas
     },
-    addMesa: function(){
-        console.log("add mesa")
+    addMesa: function(nMesa, nPax){
+        var nMesa = nMesa;
+        var nPax = nPax;
+        nuevaMesa = {
+            nMesa: nMesa,
+            nPax: nPax
+        }
+        console.log(nuevaMesa);
+        this.mesas.push(nuevaMesa);
     },
     getMesa: function(mesaId) {
       var dfd = $q.defer()
@@ -35,43 +42,36 @@ angular.module('starter.controllers', [])
 
   }
 })
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-
-  // ADD TABLE
-  $ionicModal.fromTemplateUrl('templates/addTable.html', {
-    scope: $scope
-}).then(function(addTableModal) {
-    $scope.addTableModal = addTableModal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeAddTable = function() {
-    $scope.addTableModal.hide();
-  };
-
-  // Open the login modal
-  $scope.addTable = function() {
-    $scope.addTableModal.show();
-  };
-
-  $scope.createTable = function(MesasService) {
-    //   console.log($scope.createTableData);
-    $scope.newMesa = MesasService.addMesa()
-    console.log($scope.newMesa);
-  }
-
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MesasService) {
 
   // Form data for the login modal
   $scope.loginData = {};
   $scope.createTableData = {};
+
+
+    // ADD TABLE
+    $ionicModal.fromTemplateUrl('templates/addTable.html', {
+      scope: $scope
+  }).then(function(addTableModal) {
+      $scope.addTableModal = addTableModal;
+    });
+
+    // Triggered in the login modal to close it
+    $scope.closeAddTable = function() {
+      $scope.addTableModal.hide();
+    };
+
+    // Open the login modal
+    $scope.addTable = function() {
+      $scope.addTableModal.show();
+    };
+
+    $scope.createTable = function() {
+      //   console.log($scope.createTableData);
+      MesasService.addMesa($scope.createTableData.number,$scope.createTableData.pax);
+      $scope.addTableModal.hide();
+    }
 
 
   var menu = [
@@ -128,7 +128,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('MesasCtrl', function($scope, mesas) {
+.controller('MesasCtrl', function($scope, mesas, $ionicModal, MesasService) {
   $scope.mesas = mesas;
 })
 
