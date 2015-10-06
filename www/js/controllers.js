@@ -50,6 +50,49 @@ angular.module('starter.controllers', [])
   $scope.createTableData = {};
 
 
+  var menu = {
+      "entradas": [
+          {"nombre":"borek", "precio":99},
+          {"nombre":"borek2", "precio":99},
+          {"nombre":"borek3", "precio":99}
+      ],
+      "principales": [
+          {"nombre":"pasha", "precio":199},
+          {"nombre":"pasha2", "precio":199},
+          {"nombre":"pasha3", "precio":199}
+      ],
+      "postres": [
+          {"nombre":"baklava", "precio":59},
+          {"nombre":"kadaif", "precio":59},
+          {"nombre":"mamul", "precio":59}
+      ]
+  };
+
+  $scope.groups = [];
+  for (var i=0; i<10; i++) {
+    $scope.groups[i] = {
+      name: i,
+      items: [],
+      show: false
+    };
+    for (var j=0; j<3; j++) {
+      $scope.groups[i].items.push(i + '-' + j);
+    }
+  }
+
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    group.show = !group.show;
+  };
+  $scope.isGroupShown = function(group) {
+    return group.show;
+  };
+
+
+
     // ADD TABLE
     $ionicModal.fromTemplateUrl('templates/addTable.html', {
       scope: $scope
@@ -128,12 +171,15 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('MesasCtrl', function($scope, mesas, $ionicModal, MesasService) {
-  $scope.mesas = mesas;
+.controller('MesasCtrl', function($scope, $ionicModal, MesasService) {
+  $scope.mesas = MesasService.getMesas();
 })
 
 .controller('MesaCtrl', function($scope, MesasService, $location) {
   var mesaId = $location.path().split("/")[3]||"Unknown";
   $scope.mesa = MesasService.getMesa(mesaId-1)
   console.log($scope.mesa);
+
+
+
 });
