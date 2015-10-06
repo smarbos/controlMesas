@@ -8,10 +8,7 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-android-add-circle" ng-click="addTable()">
-        </button>
-      </ion-nav-buttons>
+
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -35,29 +32,28 @@
     </ion-content>
   </ion-side-menu>
 
-  <!-- <ion-side-menu side="right">
+  <ion-side-menu side="right">
     <ion-header-bar class="bar-stable">
       <h1 class="title">Adicionar</h1>
     </ion-header-bar>
     <ion-content>
-      <ion-list>
-        <ion-item menu-close href="#/app/mesas">
-          Entradas
-        </ion-item>
-        <ion-item menu-close href="#/app/config">
-          Principales
-        </ion-item>
-        <ion-item menu-close href="#/app/acerca">
-          Postres
-        </ion-item>
-        <ion-item menu-close href="#/app/acerca">
-          Bebidas
-        </ion-item>
-        <ion-item menu-close href="#/app/acerca">
-          Otros
-        </ion-item>
-      </ion-list>
+        <ion-list>
+          <div ng-repeat="group in groups">
+            <ion-item class="item-stable"
+                      ng-click="toggleGroup(group)"
+                      ng-class="{active: isGroupShown(group)}">
+                <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              &nbsp;
+              Group {{group.name}}
+            </ion-item>
+            <ion-item class="item-accordion"
+                      ng-repeat="item in group.items"
+                      ng-show="isGroupShown(group)">
+              {{item}}
+            </ion-item>
+          </div>
+        </ion-list>
     </ion-content>
-  </ion-side-menu> -->
+  </ion-side-menu>
 
 </ion-side-menus>
