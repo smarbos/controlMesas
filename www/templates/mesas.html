@@ -1,4 +1,9 @@
+
 <ion-view view-title="Mesas">
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-android-add-circle" ng-click="addTable()">
+      </button>
+    </ion-nav-buttons>
   <ion-content>
     <ion-list>
       <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.id}}">
