@@ -37,12 +37,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/mesas.html',
-          controller: 'MesasCtrl',
-          resolve: {
-            mesas: function(MesasService) {
-              return MesasService.getMesas()
-            }
-          }
+          controller: 'MesasCtrl'
         }
       }
     })
