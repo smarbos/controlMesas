@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 .service('MesasService', function($q) {
   return {
     mesas: [
-      {
+      /*{
         id: '1',
         nMesa: 1,
         nPax: 6
@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
         id: '3',
         nMesa: 3,
         nPax: 2
-      }
+      }*/
     ],
     getMesas: function() {
       return this.mesas
@@ -24,9 +24,12 @@ angular.module('starter.controllers', [])
     addMesa: function(nMesa, nPax){
         var nMesa = nMesa;
         var nPax = nPax;
+        var currentTime = new Date;
+        console.log(currentTime);
         nuevaMesa = {
             nMesa: nMesa,
-            nPax: nPax
+            nPax: nPax,
+            currentTime: currentTime
         }
         console.log(nuevaMesa);
         this.mesas.push(nuevaMesa);
@@ -173,6 +176,14 @@ angular.module('starter.controllers', [])
 
 .controller('MesasCtrl', function($scope, $ionicModal, MesasService) {
   $scope.mesas = MesasService.getMesas();
+
+  $scope.currentTime = function(thisDate){
+    var originalDate = thisDate;
+    var currentDate = new Date;
+    var timeDiff = Math.abs(originalDate.getTime() - currentDate.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return parseInt((timeDiff/60)/60);
+  }
 })
 
 .controller('MesaCtrl', function($scope, MesasService, $location) {
