@@ -17,3 +17,26 @@ a {
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
+
+.cardNumeroMesa{
+  border: 1px solid black;
+  height: 85px;
+  vertical-align: middle;
+  position: relative;
+}
+
+.cardStatusOpen{
+  background-color: yellow;
+}
+
+.cardStatusStarter{
+  background-color: green;
+}
+
+.cardStatusMain{
+  background-color: blue;
+}
+
+.cardStatusDessert{
+  background-color: red;
+}
