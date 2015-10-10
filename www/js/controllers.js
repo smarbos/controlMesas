@@ -176,14 +176,6 @@ angular.module('starter.controllers', [])
 
 .controller('MesasCtrl', function($scope, $ionicModal, MesasService) {
   $scope.mesas = MesasService.getMesas();
-
-  $scope.currentTime = function(thisDate){
-    var originalDate = thisDate;
-    var currentDate = new Date;
-    var timeDiff = Math.abs(originalDate.getTime() - currentDate.getTime());
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    return parseInt((timeDiff/60)/60);
-  }
 })
 
 .controller('MesaCtrl', function($scope, MesasService, $location) {
