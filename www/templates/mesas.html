@@ -6,11 +6,16 @@
     </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.id}}">
-      <div class="card">
+      <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.nMesa}}">
+      <div class="card" ng-class="{
+                                    'cardStatusOpen': mesa.status === 'open',
+                                    'cardStatusStarter': mesa.status === 'starter',
+                                    'cardStatusMain': mesa.status === 'main',
+                                    'cardStatusDessert': mesa.status === 'dessert'
+                                  }">
         <div class="row">
           <div class="col col-25">
-              <div class="col text-center">
+              <div class="col text-center cardNumeroMesa">
                 <h1>{{mesa.nMesa}}</h1>
               </div>
               <div class="col text-center">
@@ -20,12 +25,12 @@
           </div>
           <div class="col col-75">
               <div class="col text-center">
-                <h2>SOME TEXT</h2>
+                <h2>{{ mesa.status }}</h2>
               </div>
               <div class="col">
                 <div class="row">
                   <div class="col  text-center">
-                    <h4>{{ (mesa.currentTime | amDifference : null : 'minute') | amDurationFormat : 'minute' }}</h4>
+                    <h4>{{ (mesa.startedAt | amDifference : null : 'minute') | amDurationFormat : 'minute' }}</h4>
                   </div>
                   <div class="col  text-center">
                     <h2>10:03</h2>
