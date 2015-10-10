@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.nMesa}}">
+      <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.tableNumber}}">
       <div class="card" ng-class="{
                                     'cardStatusOpen': mesa.status === 'open',
                                     'cardStatusStarter': mesa.status === 'starter',
@@ -16,10 +16,10 @@
         <div class="row">
           <div class="col col-25">
               <div class="col text-center cardNumeroMesa">
-                <h1>{{mesa.nMesa}}</h1>
+                <h1>{{mesa.tableNumber}}</h1>
               </div>
               <div class="col text-center">
-                <h3 style="display:inline;">{{mesa.nPax}}</h3>
+                <h3 style="display:inline;">{{mesa.pax}}</h3>
                 <h4 style="display:inline;">PAX</h4>
               </div>
           </div>

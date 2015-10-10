@@ -1,23 +1,23 @@
 angular.module('starter.controllers', [])
-.service('MesasService', function($q) {
+.service('TablesService', function($q) {
   return {
     mesas: [],
-    getMesas: function() {
+    getTables: function() {
       return this.mesas
     },
-    addMesa: function(nMesa, nPax){
-        var nMesa = nMesa;
-        var nPax = nPax;
+    addTable: function(tableNumber, pax){
+        var tableNumber = tableNumber;
+        var pax = pax;
         nuevaMesa = {
-            nMesa: nMesa,
-            nPax: nPax,
+            tableNumber: tableNumber,
+            pax: pax,
             startedAt: new Date,
             status: 'open'
         }
         console.log(nuevaMesa);
         this.mesas.push(nuevaMesa);
     },
-    getMesa: function(mesaId) {
+    getTable: function(mesaId) {
       var dfd = $q.defer()
       this.mesas.forEach(function(mesa) {
         if (mesa.id === mesaId) dfd.resolve(mesa)
@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MesasService) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, TablesService) {
 
   // Form data for the login modal
   $scope.loginData = {};
@@ -98,7 +98,7 @@ angular.module('starter.controllers', [])
 
     $scope.createTable = function() {
       //   console.log($scope.createTableData);
-      MesasService.addMesa($scope.createTableData.number,$scope.createTableData.pax);
+      TablesService.addTable($scope.createTableData.number,$scope.createTableData.pax);
       $scope.addTableModal.hide();
     }
 
@@ -157,18 +157,18 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('MesasCtrl', function($scope, $ionicModal, MesasService) {
-  $scope.mesas = MesasService.getMesas();
+.controller('MesasCtrl', function($scope, $ionicModal, TablesService) {
+  $scope.mesas = TablesService.getTables();
 })
 
-.controller('MesaCtrl', function($scope, MesasService, $location) {
+.controller('MesaCtrl', function($scope, TablesService, $location) {
   var mesaId = $location.path().split("/")[3]||"Unknown";
-  $scope.mesa = MesasService.getMesa(mesaId-1)
+  $scope.mesa = TablesService.getTable(mesaId-1)
   console.log(mesaId);
 
   $scope.changeStatus = function(tableNumber, newStatus){
-    $scope.mesas = MesasService.getMesas();
-    var match = _.find($scope.mesas, function(table) { return table.nMesa === tableNumber })
+    $scope.mesas = TablesService.getTables();
+    var match = _.find($scope.mesas, function(table) { return table.tableNumber === tableNumber })
     if (match) {
         match.status = newStatus;
     }
