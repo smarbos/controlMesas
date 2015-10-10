@@ -5,11 +5,29 @@
     </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <ion-item href="#/app/mesas/{{mesa.id}}">
+      <ion-item href="#/app/mesas/{{mesa.nMesa}}">
         <h1 class="text-center">MESA {{mesa.nMesa}}</h1>
         <h4>{{mesa.nPax}} PAX</h4>
         <h4>ID: {{mesa.id}}</h4>
       </ion-item>
     </ion-list>
   </ion-content>
+  <div class="tabs">
+    <a class="tab-item" ng-click="changeStatus(mesa.nMesa, 'open')">
+      Open
+    </a>
+    <a class="tab-item" ng-click="changeStatus(mesa.nMesa, 'starter')">
+      Starter
+    </a>
+    <a class="tab-item" ng-click="changeStatus(mesa.nMesa, 'main')">
+      Main
+    </a>
+    <a class="tab-item" ng-click="changeStatus(mesa.nMesa, 'dessert')">
+      Dessert
+    </a>
+    <a class="tab-item" ng-click="changeStatus(mesa.nMesa, 'close')">
+      Close
+    </a>
+  </div>
+
 </ion-view>
