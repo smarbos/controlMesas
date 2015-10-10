@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.1.0"
   },
   "dependencies": {
-    "angular-moment": "https://github.com/urish/angular-moment.git#~0.10.3"
+    "angular-moment": "https://github.com/urish/angular-moment.git#~0.10.3",
+    "underscore": "~1.8.3"
   }
 }
