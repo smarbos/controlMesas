@@ -1,35 +1,18 @@
 angular.module('starter.controllers', [])
 .service('MesasService', function($q) {
   return {
-    mesas: [
-      /*{
-        id: '1',
-        nMesa: 1,
-        nPax: 6
-      },
-      {
-        id: '2',
-        nMesa: 2,
-        nPax: 4
-      },
-      {
-        id: '3',
-        nMesa: 3,
-        nPax: 2
-      }*/
-    ],
+    mesas: [],
     getMesas: function() {
       return this.mesas
     },
     addMesa: function(nMesa, nPax){
         var nMesa = nMesa;
         var nPax = nPax;
-        var currentTime = new Date;
-        console.log(currentTime);
         nuevaMesa = {
             nMesa: nMesa,
             nPax: nPax,
-            currentTime: currentTime
+            startedAt: new Date,
+            status: 'open'
         }
         console.log(nuevaMesa);
         this.mesas.push(nuevaMesa);
@@ -181,7 +164,11 @@ angular.module('starter.controllers', [])
 .controller('MesaCtrl', function($scope, MesasService, $location) {
   var mesaId = $location.path().split("/")[3]||"Unknown";
   $scope.mesa = MesasService.getMesa(mesaId-1)
-  console.log($scope.mesa);
+  console.log(mesaId);
+
+  $scope.changeStatus = function(tableNumber, newStatus){
+    console.log('Change ' + tableNumber + ' to ' + newStatus + ' status');
+  }
 
 
 
