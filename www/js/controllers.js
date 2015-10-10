@@ -167,7 +167,11 @@ angular.module('starter.controllers', [])
   console.log(mesaId);
 
   $scope.changeStatus = function(tableNumber, newStatus){
-    console.log('Change ' + tableNumber + ' to ' + newStatus + ' status');
+    $scope.mesas = MesasService.getMesas();
+    var match = _.find($scope.mesas, function(table) { return table.nMesa === tableNumber })
+    if (match) {
+        match.status = newStatus;
+    }
   }
 
 
