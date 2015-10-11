@@ -42,6 +42,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'angularMoment'])
       }
     })
 
+    .state('app.about', {
+      url: '/about',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/about.html'
+        }
+      }
+    })
+
   .state('app.single', {
     url: '/mesas/:mesaId',
     views: {
