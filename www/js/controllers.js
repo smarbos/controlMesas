@@ -35,8 +35,15 @@ angular.module('starter.controllers', [])
   $scope.loginData = {};
   $scope.createTableData = {};
 
+  $scope.activeMenu = function(section){
+    $scope.activeSection = section;
+    console.log('activate menu '+ $scope.activeSection)
+  };
 
-  var menu = {
+  $scope.addToTable = function(menuItem){
+    console.log('Added ' + menuItem + ' to menu.')
+  }
+  $scope.menu = {
       "entradas": [
           {"nombre":"borek", "precio":99},
           {"nombre":"borek2", "precio":99},
@@ -53,19 +60,17 @@ angular.module('starter.controllers', [])
           {"nombre":"mamul", "precio":59}
       ]
   };
+  console.log($scope.menu);
 
-  $scope.groups = [];
-  for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: [],
-      show: false
-    };
-    for (var j=0; j<3; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }
-
+  $scope.menuSections = [{
+    name:'entradas'
+  },
+  {
+    name:'principales'
+  },
+  {
+    name:'postres'
+  }]
   /*
    * if given group is the selected group, deselect it
    * else, select the given group
@@ -102,30 +107,6 @@ angular.module('starter.controllers', [])
       $scope.addTableModal.hide();
     }
 
-
-  var menu = [
-    {
-    'entradas': {
-      'id': 1,
-      'nombre': "Borek",
-      'precio': 67
-    }
-    },
-    {
-    'principales': {
-      'id': 1,
-      'nombre': "Pasha Borek",
-      'precio': 120
-    }
-  },{
-    'postres': {
-      'id': 1,
-      'nombre': "Baklava",
-      'precio': 98
-    }
-
-  }];
-  console.log(menu);
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
