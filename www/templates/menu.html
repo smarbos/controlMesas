@@ -25,7 +25,7 @@
         <ion-item menu-close href="#/app/config">
           Config
         </ion-item>
-        <ion-item menu-close href="#/app/acerca">
+        <ion-item menu-close href="#/app/about">
           Acerca
         </ion-item>
       </ion-list>
@@ -38,20 +38,13 @@
     </ion-header-bar>
     <ion-content>
         <ion-list>
-          <div ng-repeat="group in groups">
-            <ion-item class="item-stable"
-                      ng-click="toggleGroup(group)"
-                      ng-class="{active: isGroupShown(group)}">
-                <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-              &nbsp;
-              Group {{group.name}}
-            </ion-item>
-            <ion-item class="item-accordion"
-                      ng-repeat="item in group.items"
-                      ng-show="isGroupShown(group)">
-              {{item}}
-            </ion-item>
-          </div>
+          <ion-item class="item-stable" ng-repeat="menuSection in menuSections">
+            <a ng-click="activeMenu(menuSection.name)">{{ menuSection.name }}</a>
+          </ion-item>
+          <ion-item ng-show="activeSection === 'entradas'" class="item-accordion" ng-repeat="men in menu.entradas">
+            <a ng-click="addToTable(men.nombre)">{{men.nombre}}</a>
+          </ion-item>
+
         </ion-list>
     </ion-content>
   </ion-side-menu>
