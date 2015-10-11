@@ -36,51 +36,42 @@ angular.module('starter.controllers', [])
   $scope.createTableData = {};
 
   $scope.activeMenu = function(section){
-    $scope.activeSection = section;
+    if ($scope.isSectionActive(section)) {
+      $scope.activeSection = null;
+    } else {
+      $scope.activeSection = section;
+    }
     console.log('activate menu '+ $scope.activeSection)
+  };
+
+  $scope.isSectionActive = function(section) {
+    return $scope.activeSection === section;
   };
 
   $scope.addToTable = function(menuItem){
     console.log('Added ' + menuItem + ' to menu.')
   }
-  $scope.menu = {
-      "entradas": [
-          {"nombre":"borek", "precio":99},
-          {"nombre":"borek2", "precio":99},
-          {"nombre":"borek3", "precio":99}
-      ],
-      "principales": [
-          {"nombre":"pasha", "precio":199},
-          {"nombre":"pasha2", "precio":199},
-          {"nombre":"pasha3", "precio":199}
-      ],
-      "postres": [
-          {"nombre":"baklava", "precio":59},
-          {"nombre":"kadaif", "precio":59},
-          {"nombre":"mamul", "precio":59}
-      ]
-  };
-  console.log($scope.menu);
+
+  $scope.menu = [
+          {"section": "starter", "name":"Hamus", "price":99},
+          {"section": "starter", "name":"Babaganush", "price":99},
+          {"section": "starter", "name":"Sarma", "price":99},
+          {"section": "main", "name":"Mousaka", "price":199},
+          {"section": "main", "name":"Pasha Borek", "price":199},
+          {"section": "main", "name":"Manti", "price":199}
+        ];
+console.log($scope.menu);
 
   $scope.menuSections = [{
-    name:'entradas'
+    name:'starter'
   },
   {
-    name:'principales'
+    name:'main'
   },
   {
-    name:'postres'
-  }]
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
-  $scope.toggleGroup = function(group) {
-    group.show = !group.show;
-  };
-  $scope.isGroupShown = function(group) {
-    return group.show;
-  };
+    name:'dessert'
+  }];
+
 
 
 
