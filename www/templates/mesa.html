@@ -4,25 +4,19 @@
       </button>
     </ion-nav-buttons>
   <ion-content>
-    <ion-list>
-      <ion-item href="#/app/mesas/{{mesa.tableNumber}}">
         <h1 class="text-center">MESA {{mesa.tableNumber}}</h1>
-        <h4>{{mesa.pax}} PAX</h4>
-        <h4>ID: {{mesa.id}}</h4>
-      </ion-item>
-    </ion-list>
   </ion-content>
   <div class="tabs">
-    <a class="tab-item" ng-click="changeStatus(mesa.tableNumber, 'open')">
+    <a class="tab-item" ng-class="{'cardStatusOpen': mesa.status === 'open'}" ng-click="changeStatus(mesa.tableNumber, 'open')">
       Open
     </a>
-    <a class="tab-item" ng-click="changeStatus(mesa.tableNumber, 'starter')">
+    <a class="tab-item" ng-class="{'cardStatusStarter': mesa.status === 'starter'}" ng-click="changeStatus(mesa.tableNumber, 'starter')">
       Starter
     </a>
-    <a class="tab-item" ng-click="changeStatus(mesa.tableNumber, 'main')">
+    <a class="tab-item" ng-class="{'cardStatusMain': mesa.status === 'main'}" ng-click="changeStatus(mesa.tableNumber, 'main')">
       Main
     </a>
-    <a class="tab-item" ng-click="changeStatus(mesa.tableNumber, 'dessert')">
+    <a class="tab-item" ng-class="{'cardStatusDessert': mesa.status === 'dessert'}" ng-click="changeStatus(mesa.tableNumber, 'dessert')">
       Dessert
     </a>
     <a class="tab-item" ng-click="changeStatus(mesa.tableNumber, 'close')">
