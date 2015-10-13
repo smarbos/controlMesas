@@ -35,6 +35,8 @@ angular.module('starter.controllers', [])
   $scope.loginData = {};
   $scope.createTableData = {};
 
+  $scope.allTables = ['1','2','3','4','4B','5','6','7','8','9'];
+  console.log(  $scope.allTables);
   $scope.activeMenu = function(section){
     if ($scope.isSectionActive(section)) {
       $scope.activeSection = null;
@@ -127,7 +129,9 @@ console.log($scope.menu);
   };
 })
 
+.controller('AddTable', function($scope, $ionicModal) {
 
+})
 
 .controller('MesasCtrl', function($scope, $ionicModal, TablesService) {
   $scope.mesas = TablesService.getTables();
