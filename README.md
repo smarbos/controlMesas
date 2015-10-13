@@ -10,7 +10,6 @@ Poder llevar un registro de cada mesa, asi como tambien saber cuando se marcha l
 - Adicionar items a las mesas.
 - Trackear los tiempos.
 - Configuracion
-- Acerca de...
 
 ## Version History:
 
@@ -21,3 +20,4 @@ Poder llevar un registro de cada mesa, asi como tambien saber cuando se marcha l
 ### V0.02
 - Crear mesas
 - Menu desplegable
+- Added About Info
