@@ -48,7 +48,7 @@
                         ng-repeat="men in menu"
                         ng-show="isSectionActive(menuSection.name)"
                         ng-if="men.section === menuSection.name">
-                <a ng-click="addToTable(men.name)">{{men.name}} {{mesa.tableNumber}}</a>
+                <a ng-click="addToTable(men.productId)">{{men.name}} {{mesa.tableNumber}}</a>
               </ion-item>
           </div>
         </ion-list>
