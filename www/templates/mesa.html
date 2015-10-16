@@ -5,6 +5,17 @@
     </ion-nav-buttons>
   <ion-content>
         <h1 class="text-center">MESA {{mesa.tableNumber}} <small>(ID:{{mesa.id}})</small></h1>
+        <ion-list>
+          <a  ng-repeat="product in mesa.products">
+          <div class="card">
+            <div class="row">
+                <div class="col-sm-12">
+                    {{product.productId}}
+                </div>
+            </div>
+          </div>
+        </a>
+        </ion-list>
   </ion-content>
   <div class="tabs">
     <a class="tab-item" ng-class="{'cardStatusOpen': mesa.status === 'open'}" ng-click="changeStatus(mesa.id, 'open')">
