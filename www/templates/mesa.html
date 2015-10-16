@@ -4,22 +4,22 @@
       </button>
     </ion-nav-buttons>
   <ion-content>
-        <h1 class="text-center">MESA {{mesa.tableNumber}}</h1>
+        <h1 class="text-center">MESA {{mesa.tableNumber}} <small>(ID:{{mesa.id}})</small></h1>
   </ion-content>
   <div class="tabs">
-    <a class="tab-item" ng-class="{'cardStatusOpen': mesa.status === 'open'}" ng-click="changeStatus(mesa.tableNumber, 'open')">
+    <a class="tab-item" ng-class="{'cardStatusOpen': mesa.status === 'open'}" ng-click="changeStatus(mesa.id, 'open')">
       Open
     </a>
-    <a class="tab-item" ng-class="{'cardStatusStarter': mesa.status === 'starter'}" ng-click="changeStatus(mesa.tableNumber, 'starter')">
+    <a class="tab-item" ng-class="{'cardStatusStarter': mesa.status === 'starter'}" ng-click="changeStatus(mesa.id, 'starter')">
       Starter
     </a>
-    <a class="tab-item" ng-class="{'cardStatusMain': mesa.status === 'main'}" ng-click="changeStatus(mesa.tableNumber, 'main')">
+    <a class="tab-item" ng-class="{'cardStatusMain': mesa.status === 'main'}" ng-click="changeStatus(mesa.id, 'main')">
       Main
     </a>
-    <a class="tab-item" ng-class="{'cardStatusDessert': mesa.status === 'dessert'}" ng-click="changeStatus(mesa.tableNumber, 'dessert')">
+    <a class="tab-item" ng-class="{'cardStatusDessert': mesa.status === 'dessert'}" ng-click="changeStatus(mesa.id, 'dessert')">
       Dessert
     </a>
-    <a class="tab-item" ng-click="changeStatus(mesa.tableNumber, 'close')">
+    <a class="tab-item" ng-click="changeStatus(mesa.id, 'close')">
       Close
     </a>
   </div>
