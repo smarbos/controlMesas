@@ -57,14 +57,20 @@ angular.module('starter.controllers', [])
     return $scope.activeSection === section;
   };
 
-  $scope.addToTable = function(productId){
+  $scope.addToTable = function(product)
+  {
     var targetTable =  TablesService.getCurrentTable();
-    console.log(targetTable.tableNumber);
-    console.log('Added ' + productId + ' to table ' + targetTable.tableNumber )
-    targetTable.products.push({
-        productId: productId
-    })
-    console.log(targetTable);
+    if( _.findWhere(targetTable.products, product) === undefined )
+    {
+        _.extend(product, { qty: 1});
+        targetTable.products.push(product);
+        console.log('Added ' + product.name + ' to table ' + targetTable.tableNumber )
+    }
+    else
+    {
+        
+        console.log('qty = qty +1');
+    }
   }
 
   $scope.menu = [
