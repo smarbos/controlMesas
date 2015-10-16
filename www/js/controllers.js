@@ -3,29 +3,36 @@ angular.module('starter.controllers', [])
   return {
     mesas: [],
     getTables: function() {
-      return this.mesas
+      return this.mesas;
     },
     addTable: function(tableNumber, pax){
+        var id = this.mesas.length + 1;
         var tableNumber = tableNumber;
         var pax = pax;
-        nuevaMesa = {
+        var nuevaMesa = {
+            id: id,
             tableNumber: tableNumber,
             pax: pax,
             startedAt: new Date,
-            status: 'open'
-        }
+            status: 'open',
+            selected: false,
+            products : []
+        };
         console.log(nuevaMesa);
         this.mesas.push(nuevaMesa);
     },
     getTable: function(mesaId) {
-      var dfd = $q.defer()
-      this.mesas.forEach(function(mesa) {
-        if (mesa.id === mesaId) dfd.resolve(mesa)
-      })
+      return this.mesas[mesaId];
+    },
+    setCurrentTable: function(mesaId) {
+        _.each(this.mesas, function(mesa) { mesa.selected = false; });
+        console.log(this.mesas);
+        // this.mesas[mesaId].selected = true;
+    },
+    getCurrentTable: function() {
+    return _.findWhere(this.mesas, { selected: true});
 
-      return this.mesas[mesaId]
     }
-
   }
 })
 
@@ -51,7 +58,8 @@ angular.module('starter.controllers', [])
   };
 
   $scope.addToTable = function(menuItem){
-    console.log('Added ' + menuItem + ' to menu.')
+    var targetTable =  TablesService.setCurrentTable();
+    console.log('Added ' + menuItem + ' to table ' + targetTable )
   }
 
   $scope.menu = [
@@ -139,12 +147,11 @@ console.log($scope.menu);
 
 .controller('MesaCtrl', function($scope, TablesService, $location) {
   var mesaId = $location.path().split("/")[3]||"Unknown";
+  TablesService.setCurrentTable(mesaId);
   $scope.mesa = TablesService.getTable(mesaId-1)
-  console.log(mesaId);
-
-  $scope.changeStatus = function(tableNumber, newStatus){
+  $scope.changeStatus = function(tableId, newStatus){
     $scope.mesas = TablesService.getTables();
-    var match = _.find($scope.mesas, function(table) { return table.tableNumber === tableNumber })
+    var match = _.find($scope.mesas, function(table) { return table.id === tableId })
     if (match) {
         match.status = newStatus;
     }
