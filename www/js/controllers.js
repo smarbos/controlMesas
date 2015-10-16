@@ -57,19 +57,23 @@ angular.module('starter.controllers', [])
     return $scope.activeSection === section;
   };
 
-  $scope.addToTable = function(menuItem){
+  $scope.addToTable = function(productId){
     var targetTable =  TablesService.getCurrentTable();
     console.log(targetTable.tableNumber);
-    console.log('Added ' + menuItem + ' to table ' + targetTable.tableNumber )
+    console.log('Added ' + productId + ' to table ' + targetTable.tableNumber )
+    targetTable.products.push({
+        productId: productId
+    })
+    console.log(targetTable);
   }
 
   $scope.menu = [
-          {"section": "starter", "name":"Hamus", "price":99},
-          {"section": "starter", "name":"Babaganush", "price":99},
-          {"section": "starter", "name":"Sarma", "price":99},
-          {"section": "main", "name":"Mousaka", "price":199},
-          {"section": "main", "name":"Pasha Borek", "price":199},
-          {"section": "main", "name":"Manti", "price":199}
+          {"section": "starter", "productId": 1, "name":"Hamus", "price":99},
+          {"section": "starter", "productId": 2, "name":"Babaganush", "price":99},
+          {"section": "starter", "productId": 3, "name":"Sarma", "price":99},
+          {"section": "main", "productId": 4, "name":"Mousaka", "price":199},
+          {"section": "main", "productId": 5, "name":"Pasha Borek", "price":199},
+          {"section": "main", "productId": 6, "name":"Manti", "price":199}
         ];
 console.log($scope.menu);
 
