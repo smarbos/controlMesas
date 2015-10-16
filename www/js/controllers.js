@@ -26,8 +26,8 @@ angular.module('starter.controllers', [])
     },
     setCurrentTable: function(mesaId) {
         _.each(this.mesas, function(mesa) { mesa.selected = false; });
-        console.log(this.mesas);
-        // this.mesas[mesaId].selected = true;
+        console.log('Current table is now: #' + mesaId);
+        this.mesas[mesaId-1].selected = true;
     },
     getCurrentTable: function() {
     return _.findWhere(this.mesas, { selected: true});
@@ -58,8 +58,9 @@ angular.module('starter.controllers', [])
   };
 
   $scope.addToTable = function(menuItem){
-    var targetTable =  TablesService.setCurrentTable();
-    console.log('Added ' + menuItem + ' to table ' + targetTable )
+    var targetTable =  TablesService.getCurrentTable();
+    console.log(targetTable.tableNumber);
+    console.log('Added ' + menuItem + ' to table ' + targetTable.tableNumber )
   }
 
   $scope.menu = [
