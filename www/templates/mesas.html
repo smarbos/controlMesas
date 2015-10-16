@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.tableNumber}}">
+      <a  ng-repeat="mesa in mesas" href="#/app/mesas/{{mesa.id}}">
       <div class="card" ng-class="{
                                     'cardStatusOpen': mesa.status === 'open',
                                     'cardStatusStarter': mesa.status === 'starter',
