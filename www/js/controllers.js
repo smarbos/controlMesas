@@ -68,8 +68,8 @@ angular.module('starter.controllers', [])
     }
     else
     {
-
-        console.log('qty = qty +1');
+        _.findWhere(targetTable.products, product).qty = _.findWhere(targetTable.products, product).qty + 1
+        console.log('Updated ' + product.name + ' to ' + _.findWhere(targetTable.products, product).qty )
     }
   }
 
