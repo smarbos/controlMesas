@@ -1,5 +1,5 @@
 angular.module('starter.controllers', [])
-.service('TablesService', function($q) {
+.service('TablesService', function($q, $localStorage) {
   return {
     mesas: [],
     getTables: function() {
@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, TablesService) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, TablesService, $localStorage) {
 
   // Form data for the login modal
   $scope.loginData = {};
@@ -68,7 +68,7 @@ angular.module('starter.controllers', [])
     }
     else
     {
-        
+
         console.log('qty = qty +1');
     }
   }
