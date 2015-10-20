@@ -3,7 +3,8 @@ angular.module('starter.controllers', [])
   return {
     mesas: [],
     getTables: function() {
-      return this.mesas;
+        this.mesas = $localStorage.tables;
+        return this.mesas;
     },
     addTable: function(tableNumber, pax){
         var id = this.mesas.length + 1;
@@ -20,6 +21,7 @@ angular.module('starter.controllers', [])
         };
         console.log(nuevaMesa);
         this.mesas.push(nuevaMesa);
+        $localStorage.tables = this.mesas;
     },
     getTable: function(mesaId) {
       return this.mesas[mesaId];
