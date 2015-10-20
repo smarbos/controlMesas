@@ -5,7 +5,6 @@ Poder llevar un registro de cada mesa, asi como tambien saber cuando se marcha l
 
 
 ## TODO:
-- Persistir la data.
 - Gestionar los items del menu.
 - Trackear los tiempos.
 - Configuracion
@@ -23,3 +22,4 @@ Poder llevar un registro de cada mesa, asi como tambien saber cuando se marcha l
 
 ### V0.03
 - Adicionar items a las mesas
+- Persistir la data.
